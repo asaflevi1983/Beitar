@@ -10,7 +10,7 @@
     <div class="container">
         <header>
             <h1>⚽ לומדים מספרים עם בית"ר ⚽</h1>
-            <p class="subtitle">מספרים 1-20 בעברית</p>
+            <p class="subtitle">מספרים 1-30 בעברית</p>
             <p class="dedication">💛 מוקדש במיוחד לאיתן 💛</p>
         </header>
 
@@ -19,6 +19,8 @@
             <button class="mode-btn active" data-mode="learn">למידה</button>
             <button class="mode-btn" data-mode="quiz">חידון</button>
             <button class="mode-btn" data-mode="order">סדר נכון</button>
+            <button class="mode-btn" data-mode="memory">זיכרון</button>
+            <button class="mode-btn" data-mode="letters">אותיות</button>
         </nav>
 
         <!-- Learn Mode -->
@@ -46,8 +48,6 @@
                 <div class="quiz-type-selector">
                     <label>סוג שאלה:</label>
                     <select id="quiz-type">
-                        <option value="word-to-number">בחר את המספר</option>
-                        <option value="number-to-word">בחר את המילה</option>
                         <option value="count-balls">ספור כדורים</option>
                     </select>
                 </div>
@@ -67,18 +67,64 @@
         <!-- Order Mode -->
         <section id="order-mode" class="mode-section">
             <div class="order-header">
-                <h2>סדרו את המספרים מ-1 עד 20</h2>
-                <p>גררו את הקלפים למקום הנכון</p>
+                <h2>סדרו את המספרים מ-1 עד 30</h2>
+                <p>לחץ על הקלפים לפי הסדר הנכון</p>
             </div>
             
             <div class="order-controls">
-                <button class="btn btn-primary" id="check-order-btn">✓ בדוק</button>
+                <button class="btn btn-primary" id="approve-order-btn">✓ אשר</button>
+                <button class="btn btn-danger" id="reject-order-btn">✗ דחה</button>
                 <button class="btn btn-secondary" id="shuffle-btn">🔀 ערבב מחדש</button>
             </div>
             
             <div class="cards-container" id="cards-container"></div>
             
             <div class="order-feedback" id="order-feedback"></div>
+        </section>
+
+        <!-- Memory Game Mode -->
+        <section id="memory-mode" class="mode-section">
+            <div class="memory-header">
+                <h2>משחק זיכרון</h2>
+                <div class="memory-stats">
+                    <span>מהלכים: <strong id="memory-moves">0</strong></span>
+                    <span>זוגות: <strong id="memory-pairs">0</strong></span>
+                </div>
+            </div>
+            
+            <div class="memory-controls">
+                <label>גודל לוח:</label>
+                <select id="memory-size">
+                    <option value="4">4x4 (8 זוגות)</option>
+                    <option value="6">6x6 (18 זוגות)</option>
+                    <option value="8">8x8 (32 זוגות - מתקדם)</option>
+                </select>
+                <button class="btn btn-secondary" id="memory-reset-btn">🔄 משחק חדש</button>
+            </div>
+            
+            <div class="memory-grid" id="memory-grid"></div>
+            
+            <div class="memory-feedback" id="memory-feedback"></div>
+        </section>
+
+        <!-- Letters Game Mode -->
+        <section id="letters-mode" class="mode-section">
+            <div class="letters-header">
+                <h2>לומדים אותיות</h2>
+                <p class="subtitle">אלף-בית עברי</p>
+            </div>
+            
+            <div class="letter-display">
+                <div class="letter-large" id="letter-char">א</div>
+                <div class="letter-name" id="letter-name">אָלֶף</div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn btn-secondary" id="letter-prev-btn">⏮ הקודמת</button>
+                <button class="btn btn-primary" id="letter-speak-btn">🔊 הקרא</button>
+                <button class="btn btn-secondary" id="letter-random-btn">🎲 אקראי</button>
+                <button class="btn btn-secondary" id="letter-next-btn">הבאה ⏭</button>
+            </div>
         </section>
     </div>
 
