@@ -49,8 +49,8 @@ const hebrewAlphabet = [
     { char: 'ל', name: 'לָמֶד' },
     { char: 'מ', name: 'מֵם' },
     { char: 'ם', name: 'מֵם סוֹפִית' },
-    { char: 'ן', name: 'נוּן סוֹפִית' },
     { char: 'נ', name: 'נוּן' },
+    { char: 'ן', name: 'נוּן סוֹפִית' },
     { char: 'ס', name: 'סָמֶךְ' },
     { char: 'ע', name: 'עַיִן' },
     { char: 'פ', name: 'פֵּא' },
@@ -269,7 +269,6 @@ function updateScoreDisplay() {
 
 // Order Mode
 let selectedCards = [];
-let orderTarget = 1;
 
 function initOrderMode() {
     shuffleCards();
@@ -294,7 +293,6 @@ function shuffleCards() {
     
     // Reset selection state
     selectedCards = [];
-    orderTarget = 1;
     updateOrderDisplay();
     
     // Clear feedback
@@ -334,16 +332,31 @@ function handleCardClick(card) {
         if (index > -1) {
             selectedCards.splice(index, 1);
         }
+        
+        // Update all selected cards to show new order
+        updateSelectedCardsDisplay();
     } else {
         // Select card
         card.classList.add('selected');
         selectedCards.push(number);
         
-        // Show order number on card
-        card.querySelector('.card-number').textContent = `${number} (${selectedCards.length})`;
+        // Show only the order number on selected card
+        card.querySelector('.card-number').textContent = selectedCards.length;
     }
     
     updateOrderDisplay();
+}
+
+function updateSelectedCardsDisplay() {
+    // Update all selected cards to show their correct order number
+    const allCards = document.querySelectorAll('.number-card');
+    allCards.forEach(card => {
+        if (card.classList.contains('selected')) {
+            const number = parseInt(card.dataset.number);
+            const orderIndex = selectedCards.indexOf(number) + 1;
+            card.querySelector('.card-number').textContent = orderIndex;
+        }
+    });
 }
 
 function updateOrderDisplay() {
@@ -403,7 +416,6 @@ function rejectOrder() {
     });
     
     selectedCards = [];
-    orderTarget = 1;
     updateOrderDisplay();
     
     const feedbackEl = document.getElementById('order-feedback');
