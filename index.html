@@ -21,9 +21,9 @@
         <nav class="mode-nav">
             <button class="mode-btn active" data-mode="learn">למידה</button>
             <button class="mode-btn" data-mode="quiz">חידון</button>
-            <button class="mode-btn" data-mode="order">סדר נכון</button>
             <button class="mode-btn" data-mode="memory">זיכרון</button>
             <button class="mode-btn" data-mode="letters">אותיות</button>
+            <button class="mode-btn" data-mode="letters-memory">זיכרון אותיות</button>
         </nav>
 
         <!-- Learn Mode -->
@@ -65,24 +65,6 @@
             <div class="quiz-options" id="quiz-options"></div>
             
             <div class="quiz-feedback" id="quiz-feedback"></div>
-        </section>
-
-        <!-- Order Mode -->
-        <section id="order-mode" class="mode-section">
-            <div class="order-header">
-                <h2>סדרו את המספרים מ-1 עד 30</h2>
-                <p>לחץ על הקלפים לפי הסדר הנכון</p>
-            </div>
-            
-            <div class="order-controls">
-                <button class="btn btn-primary" id="approve-order-btn">✓ אשר</button>
-                <button class="btn btn-danger" id="reject-order-btn">✗ דחה</button>
-                <button class="btn btn-secondary" id="shuffle-btn">🔀 ערבב מחדש</button>
-            </div>
-            
-            <div class="cards-container" id="cards-container"></div>
-            
-            <div class="order-feedback" id="order-feedback"></div>
         </section>
 
         <!-- Memory Game Mode -->
@@ -128,6 +110,30 @@
                 <button class="btn btn-secondary" id="letter-random-btn">🎲 אקראי</button>
                 <button class="btn btn-secondary" id="letter-next-btn">הבאה ⏭</button>
             </div>
+        </section>
+
+        <!-- Letters Memory Game Mode -->
+        <section id="letters-memory-mode" class="mode-section">
+            <div class="memory-header">
+                <h2>משחק זיכרון - אותיות</h2>
+                <div class="memory-stats">
+                    <span>מהלכים: <strong id="letters-memory-moves">0</strong></span>
+                    <span>זוגות: <strong id="letters-memory-pairs">0</strong></span>
+                </div>
+            </div>
+            
+            <div class="memory-controls">
+                <label>גודל לוח:</label>
+                <select id="letters-memory-size">
+                    <option value="4">4x4 (8 זוגות)</option>
+                    <option value="6">6x6 (18 זוגות)</option>
+                </select>
+                <button class="btn btn-secondary" id="letters-memory-reset-btn">🔄 משחק חדש</button>
+            </div>
+            
+            <div class="memory-grid" id="letters-memory-grid"></div>
+            
+            <div class="memory-feedback" id="letters-memory-feedback"></div>
         </section>
     </div>
 

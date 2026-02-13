@@ -79,15 +79,20 @@ let memoryFlipped = [];
 let memoryMatched = [];
 let memoryMoves = 0;
 let memoryPairs = 0;
+let lettersMemoryCards = [];
+let lettersMemoryFlipped = [];
+let lettersMemoryMatched = [];
+let lettersMemoryMoves = 0;
+let lettersMemoryPairs = 0;
 
 // Initialize app
 document.addEventListener('DOMContentLoaded', () => {
     initModeNavigation();
     initLearnMode();
     initQuizMode();
-    initOrderMode();
     initMemoryMode();
     initLettersMode();
+    initLettersMemoryMode();
     loadScores();
 });
 
@@ -265,162 +270,6 @@ function handleQuizAnswer(selectedAnswer, btn) {
 function updateScoreDisplay() {
     document.getElementById('score').textContent = quizScore;
     document.getElementById('streak').textContent = quizStreak;
-}
-
-// Order Mode
-let selectedCards = [];
-
-function initOrderMode() {
-    shuffleCards();
-    
-    document.getElementById('approve-order-btn').addEventListener('click', approveOrder);
-    document.getElementById('reject-order-btn').addEventListener('click', rejectOrder);
-    document.getElementById('shuffle-btn').addEventListener('click', shuffleCards);
-}
-
-function shuffleCards() {
-    const container = document.getElementById('cards-container');
-    container.innerHTML = '';
-    
-    // Create shuffled array of numbers 1-30
-    const numbers = Array.from({length: 30}, (_, i) => i + 1);
-    numbers.sort(() => Math.random() - 0.5);
-    
-    numbers.forEach((num, index) => {
-        const card = createCard(num, index);
-        container.appendChild(card);
-    });
-    
-    // Reset selection state
-    selectedCards = [];
-    updateOrderDisplay();
-    
-    // Clear feedback
-    document.getElementById('order-feedback').textContent = '';
-    document.getElementById('order-feedback').className = 'order-feedback';
-}
-
-function createCard(number, index) {
-    const card = document.createElement('div');
-    card.className = 'number-card';
-    card.dataset.number = number;
-    card.dataset.index = index;
-    
-    const cardNumber = document.createElement('div');
-    cardNumber.className = 'card-number';
-    cardNumber.textContent = number;
-    
-    card.appendChild(cardNumber);
-    
-    // Click event listener
-    card.addEventListener('click', () => handleCardClick(card));
-    
-    return card;
-}
-
-function handleCardClick(card) {
-    const number = parseInt(card.dataset.number);
-    
-    // Check if card is already selected
-    if (card.classList.contains('selected')) {
-        // Deselect card
-        card.classList.remove('selected');
-        card.querySelector('.card-number').textContent = number;
-        
-        // Remove from selected cards
-        const index = selectedCards.indexOf(number);
-        if (index > -1) {
-            selectedCards.splice(index, 1);
-        }
-        
-        // Update all selected cards to show new order
-        updateSelectedCardsDisplay();
-    } else {
-        // Select card
-        card.classList.add('selected');
-        selectedCards.push(number);
-        
-        // Show only the order number on selected card
-        card.querySelector('.card-number').textContent = selectedCards.length;
-    }
-    
-    updateOrderDisplay();
-}
-
-function updateSelectedCardsDisplay() {
-    // Update all selected cards to show their correct order number
-    const allCards = document.querySelectorAll('.number-card');
-    allCards.forEach(card => {
-        if (card.classList.contains('selected')) {
-            const number = parseInt(card.dataset.number);
-            const orderIndex = selectedCards.indexOf(number) + 1;
-            card.querySelector('.card-number').textContent = orderIndex;
-        }
-    });
-}
-
-function updateOrderDisplay() {
-    const feedbackEl = document.getElementById('order-feedback');
-    if (selectedCards.length === 0) {
-        feedbackEl.textContent = 'לחץ על הקלפים לפי הסדר הנכון (1-30)';
-        feedbackEl.className = 'order-feedback';
-    } else if (selectedCards.length === 30) {
-        feedbackEl.textContent = 'סיימת! לחץ על "אשר" לבדוק את התשובה';
-        feedbackEl.className = 'order-feedback info';
-    } else {
-        feedbackEl.textContent = `נבחרו ${selectedCards.length} מתוך 30 קלפים`;
-        feedbackEl.className = 'order-feedback info';
-    }
-}
-
-function approveOrder() {
-    if (selectedCards.length !== 30) {
-        const feedbackEl = document.getElementById('order-feedback');
-        feedbackEl.textContent = 'עליך לבחור את כל 30 הקלפים!';
-        feedbackEl.className = 'order-feedback error';
-        return;
-    }
-    
-    // Check if order is correct
-    let isCorrect = true;
-    for (let i = 0; i < selectedCards.length; i++) {
-        if (selectedCards[i] !== i + 1) {
-            isCorrect = false;
-            break;
-        }
-    }
-    
-    const feedbackEl = document.getElementById('order-feedback');
-    
-    if (isCorrect) {
-        feedbackEl.textContent = '🎉 מעולה! הסדר נכון! 🎉';
-        feedbackEl.className = 'order-feedback success';
-        quizScore += 50;
-        updateScoreDisplay();
-        saveScores();
-        speakText('מעולה הסדר נכון');
-    } else {
-        feedbackEl.textContent = '😕 לא נכון... נסה שוב!';
-        feedbackEl.className = 'order-feedback error';
-        speakText('לא נכון נסה שוב');
-    }
-}
-
-function rejectOrder() {
-    // Clear all selections
-    const cards = document.querySelectorAll('.number-card');
-    cards.forEach(card => {
-        card.classList.remove('selected');
-        const number = parseInt(card.dataset.number);
-        card.querySelector('.card-number').textContent = number;
-    });
-    
-    selectedCards = [];
-    updateOrderDisplay();
-    
-    const feedbackEl = document.getElementById('order-feedback');
-    feedbackEl.textContent = 'הבחירה נמחקה';
-    feedbackEl.className = 'order-feedback';
 }
 
 // Speech Synthesis
@@ -624,4 +473,132 @@ function updateLettersDisplay() {
     const letter = hebrewAlphabet[currentLetter];
     document.getElementById('letter-char').textContent = letter.char;
     document.getElementById('letter-name').textContent = letter.name;
+}
+
+// Letters Memory Game Mode
+function initLettersMemoryMode() {
+    document.getElementById('letters-memory-size').addEventListener('change', resetLettersMemoryGame);
+    document.getElementById('letters-memory-reset-btn').addEventListener('click', resetLettersMemoryGame);
+    resetLettersMemoryGame();
+}
+
+function resetLettersMemoryGame() {
+    const size = parseInt(document.getElementById('letters-memory-size').value);
+    const totalCards = size * size;
+    const numPairs = totalCards / 2;
+    
+    // Create pairs of letters (using first numPairs letters from alphabet)
+    const letters = [];
+    for (let i = 0; i < numPairs; i++) {
+        const letter = hebrewAlphabet[i];
+        letters.push(letter, letter);
+    }
+    
+    // Shuffle cards
+    lettersMemoryCards = letters.sort(() => Math.random() - 0.5);
+    lettersMemoryFlipped = [];
+    lettersMemoryMatched = [];
+    lettersMemoryMoves = 0;
+    lettersMemoryPairs = 0;
+    
+    updateLettersMemoryDisplay();
+    renderLettersMemoryGrid(size);
+}
+
+function renderLettersMemoryGrid(size) {
+    const grid = document.getElementById('letters-memory-grid');
+    grid.innerHTML = '';
+    grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    
+    lettersMemoryCards.forEach((letter, index) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card';
+        card.dataset.index = index;
+        card.dataset.letter = letter.char;
+        
+        const cardInner = document.createElement('div');
+        cardInner.className = 'memory-card-inner';
+        
+        const cardFront = document.createElement('div');
+        cardFront.className = 'memory-card-front';
+        cardFront.textContent = '⚽';
+        
+        const cardBack = document.createElement('div');
+        cardBack.className = 'memory-card-back';
+        cardBack.textContent = letter.char;
+        
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        card.appendChild(cardInner);
+        
+        card.addEventListener('click', () => handleLettersMemoryCardClick(index));
+        
+        grid.appendChild(card);
+    });
+}
+
+function handleLettersMemoryCardClick(index) {
+    // Don't allow clicking on already matched or currently flipped cards
+    if (lettersMemoryMatched.includes(index) || lettersMemoryFlipped.includes(index)) {
+        return;
+    }
+    
+    // Don't allow more than 2 cards flipped at once
+    if (lettersMemoryFlipped.length >= 2) {
+        return;
+    }
+    
+    // Flip the card
+    lettersMemoryFlipped.push(index);
+    const card = document.querySelector(`#letters-memory-grid .memory-card[data-index="${index}"]`);
+    card.classList.add('flipped');
+    
+    // Speak the letter when flipped
+    const letter = lettersMemoryCards[index];
+    speakText(letter.name);
+    
+    // Check for match when 2 cards are flipped
+    if (lettersMemoryFlipped.length === 2) {
+        lettersMemoryMoves++;
+        updateLettersMemoryDisplay();
+        
+        const [first, second] = lettersMemoryFlipped;
+        const firstLetter = lettersMemoryCards[first];
+        const secondLetter = lettersMemoryCards[second];
+        
+        if (firstLetter.char === secondLetter.char) {
+            // Match found
+            lettersMemoryMatched.push(first, second);
+            lettersMemoryPairs++;
+            updateLettersMemoryDisplay();
+            lettersMemoryFlipped = [];
+            
+            // Check if game is complete
+            if (lettersMemoryMatched.length === lettersMemoryCards.length) {
+                setTimeout(() => {
+                    const feedbackEl = document.getElementById('letters-memory-feedback');
+                    feedbackEl.textContent = `🎉 מעולה! סיימת ב-${lettersMemoryMoves} מהלכים! 🎉`;
+                    feedbackEl.className = 'memory-feedback success';
+                    quizScore += 100;
+                    updateScoreDisplay();
+                    saveScores();
+                    speakText('מעולה');
+                }, 300);
+            }
+        } else {
+            // No match
+            setTimeout(() => {
+                const firstCard = document.querySelector(`#letters-memory-grid .memory-card[data-index="${first}"]`);
+                const secondCard = document.querySelector(`#letters-memory-grid .memory-card[data-index="${second}"]`);
+                firstCard.classList.remove('flipped');
+                secondCard.classList.remove('flipped');
+                lettersMemoryFlipped = [];
+            }, 1000);
+        }
+    }
+}
+
+function updateLettersMemoryDisplay() {
+    document.getElementById('letters-memory-moves').textContent = lettersMemoryMoves;
+    document.getElementById('letters-memory-pairs').textContent = lettersMemoryPairs;
 }
