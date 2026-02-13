@@ -1,0 +1,27 @@
+<svg width="100" height="120" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Beitar Jerusalem jersey -->
+  
+  <!-- Sleeves -->
+  <path d="M 20 30 L 10 35 L 15 50 L 25 45 Z" fill="#FFD700" stroke="#000000" stroke-width="1.5"/>
+  <path d="M 80 30 L 90 35 L 85 50 L 75 45 Z" fill="#FFD700" stroke="#000000" stroke-width="1.5"/>
+  
+  <!-- Main jersey body - yellow with black stripes -->
+  <rect x="25" y="25" width="50" height="70" rx="3" fill="#FFD700" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Black horizontal stripes -->
+  <rect x="25" y="35" width="50" height="6" fill="#000000"/>
+  <rect x="25" y="50" width="50" height="6" fill="#000000"/>
+  <rect x="25" y="65" width="50" height="6" fill="#000000"/>
+  
+  <!-- Collar -->
+  <path d="M 40 25 L 40 30 L 50 32 L 60 30 L 60 25" 
+        fill="none" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Number 10 on jersey -->
+  <text x="50" y="90" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        fill="#000000" text-anchor="middle">10</text>
+  
+  <!-- Bottom of jersey -->
+  <path d="M 25 95 Q 30 98 50 98 Q 70 98 75 95" 
+        fill="none" stroke="#000000" stroke-width="2"/>
+</svg>
