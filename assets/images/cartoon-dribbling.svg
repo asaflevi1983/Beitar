@@ -1,0 +1,145 @@
+<svg width="350" height="450" viewBox="0 0 350 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cartoon Soccer Player Dribbling - Beitar Style -->
+  <defs>
+    <linearGradient id="skinColor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD6B3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFCBA4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="yellowJersey" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE44D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Title -->
+  <text x="175" y="30" font-family="Arial, sans-serif" font-size="22" font-weight="bold" 
+        fill="#FFD700" text-anchor="middle" stroke="#000000" stroke-width="1">⚽ בית"ר ירושלים ⚽</text>
+  
+  <!-- Soccer ball at feet -->
+  <g transform="translate(200, 350)">
+    <circle cx="0" cy="0" r="25" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <polygon points="0,-15 7,-7 5,3 -5,3 -7,-7" fill="#000000"/>
+    <polygon points="-10,5 -5,-10 5,-10 10,5 5,12 -5,12" fill="none" stroke="#000000" stroke-width="2"/>
+    <polygon points="10,5 12,12 5,17 -2,15 -5,12" fill="#FFD700"/>
+  </g>
+  
+  <!-- Ground shadow -->
+  <ellipse cx="175" cy="395" rx="100" ry="12" fill="#000000" opacity="0.2"/>
+  
+  <!-- Head -->
+  <circle cx="175" cy="140" r="40" fill="url(#skinColor)" stroke="#000000" stroke-width="2"/>
+  
+  <!-- Hair (spiky, energetic) -->
+  <g fill="#2a2a2a" stroke="#000000" stroke-width="2">
+    <path d="M 145 130 Q 140 115 148 110"/>
+    <path d="M 160 120 Q 158 105 165 100"/>
+    <path d="M 175 115 Q 175 95 180 90"/>
+    <path d="M 190 120 Q 192 105 198 100"/>
+    <path d="M 205 130 Q 210 115 202 110"/>
+    <ellipse cx="175" cy="125" rx="40" ry="20" fill="#2a2a2a"/>
+  </g>
+  
+  <!-- Excited expression -->
+  <g>
+    <!-- Wide open happy eyes -->
+    <ellipse cx="160" cy="135" rx="6" ry="8" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <ellipse cx="190" cy="135" rx="6" ry="8" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+    <circle cx="160" cy="137" r="3" fill="#000000"/>
+    <circle cx="190" cy="137" r="3" fill="#000000"/>
+    
+    <!-- Big smile -->
+    <path d="M 155 150 Q 175 165 195 150" fill="none" stroke="#000000" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 160 152 Q 175 162 190 152" fill="#FFB6C1" opacity="0.6"/>
+  </g>
+  
+  <!-- Sweat drops (action!) -->
+  <ellipse cx="145" cy="145" rx="3" ry="5" fill="#87CEEB" opacity="0.7" transform="rotate(-30 145 145)"/>
+  <ellipse cx="205" cy="148" rx="3" ry="5" fill="#87CEEB" opacity="0.7" transform="rotate(30 205 148)"/>
+  
+  <!-- Beitar Jersey with details -->
+  <g>
+    <!-- Main jersey body -->
+    <path d="M 140 175 L 210 175 L 215 260 L 135 260 Z" fill="url(#yellowJersey)" stroke="#000000" stroke-width="2"/>
+    
+    <!-- Black diagonal stripe (Beitar style) -->
+    <path d="M 140 175 L 155 175 L 170 260 L 155 260 Z" fill="#000000"/>
+    
+    <!-- Collar -->
+    <circle cx="175" cy="180" r="8" fill="#000000" stroke="#000000" stroke-width="1"/>
+    <path d="M 167 180 L 175 185 L 183 180" fill="url(#yellowJersey)"/>
+    
+    <!-- Jersey number 7 -->
+    <text x="185" y="225" font-family="Arial, sans-serif" font-size="35" font-weight="bold" 
+          fill="#000000" text-anchor="middle">7</text>
+    
+    <!-- Mini Beitar badge -->
+    <g transform="translate(195, 185) scale(0.08)">
+      <path d="M50 0 L90 15 L90 50 Q90 70 50 85 Q10 70 10 50 L10 15 Z" fill="#000000" stroke="#FFD700" stroke-width="4"/>
+      <polygon points="50,30 58,45 42,45" fill="#FFD700"/>
+      <polygon points="50,60 42,45 58,45" fill="#FFD700"/>
+    </g>
+  </g>
+  
+  <!-- Right arm (reaching for ball) -->
+  <g>
+    <path d="M 210 190 Q 240 210 245 240" fill="none" stroke="url(#skinColor)" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="245" cy="242" r="14" fill="url(#skinColor)" stroke="#000000" stroke-width="2"/>
+    <!-- Fingers -->
+    <ellipse cx="251" cy="245" rx="4" ry="7" fill="url(#skinColor)" stroke="#000000" stroke-width="1"/>
+    <ellipse cx="243" cy="248" rx="4" ry="7" fill="url(#skinColor)" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- Left arm (balance) -->
+  <g>
+    <path d="M 140 190 Q 110 200 100 230" fill="none" stroke="url(#skinColor)" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="100" cy="232" r="14" fill="url(#skinColor)" stroke="#000000" stroke-width="2"/>
+    <!-- Fingers -->
+    <ellipse cx="94" cy="235" rx="4" ry="7" fill="url(#skinColor)" stroke="#000000" stroke-width="1"/>
+    <ellipse cx="102" cy="238" rx="4" ry="7" fill="url(#skinColor)" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- Black shorts -->
+  <rect x="140" y="260" width="70" height="40" rx="5" fill="#000000" stroke="#000000" stroke-width="2"/>
+  <!-- Gold stripe on shorts -->
+  <rect x="140" y="275" width="70" height="5" fill="#FFD700"/>
+  
+  <!-- Right leg (dribbling position) -->
+  <g>
+    <path d="M 195 295 Q 210 330 200 360" fill="none" stroke="url(#skinColor)" stroke-width="32" stroke-linecap="round"/>
+    <!-- Black sock -->
+    <rect x="187" y="355" width="25" height="35" rx="3" fill="#000000"/>
+    <rect x="187" y="365" width="25" height="3" fill="#FFD700"/>
+    <rect x="187" y="375" width="25" height="3" fill="#FFD700"/>
+    <!-- Shoe -->
+    <ellipse cx="200" cy="395" rx="20" ry="10" fill="#000000" stroke="#000000" stroke-width="2"/>
+    <path d="M 185 393 Q 190 388 195 393" fill="#FFD700"/>
+  </g>
+  
+  <!-- Left leg (supporting) -->
+  <g>
+    <path d="M 155 295 Q 145 330 150 365" fill="none" stroke="url(#skinColor)" stroke-width="32" stroke-linecap="round"/>
+    <!-- Black sock -->
+    <rect x="137" y="360" width="25" height="35" rx="3" fill="#000000"/>
+    <rect x="137" y="370" width="25" height="3" fill="#FFD700"/>
+    <rect x="137" y="380" width="25" height="3" fill="#FFD700"/>
+    <!-- Shoe -->
+    <ellipse cx="150" cy="400" rx="22" ry="11" fill="#000000" stroke="#000000" stroke-width="2"/>
+    <path d="M 135 398 Q 140 393 145 398" fill="#FFD700"/>
+  </g>
+  
+  <!-- Speed/action lines -->
+  <g stroke="#FFD700" stroke-width="3" opacity="0.5" stroke-linecap="round">
+    <line x1="250" y1="140" x2="280" y2="130"/>
+    <line x1="255" y1="155" x2="285" y2="150"/>
+    <line x1="250" y1="170" x2="275" y2="170"/>
+    <line x1="80" y1="200" x2="60" y2="195"/>
+    <line x1="85" y1="215" x2="65" y2="215"/>
+  </g>
+  
+  <!-- Stars for energy -->
+  <g fill="#FFD700" stroke="#000000" stroke-width="1">
+    <path d="M 270 100 L 273 106 L 280 107 L 275 112 L 277 119 L 270 115 L 263 119 L 265 112 L 260 107 L 267 106 Z"/>
+    <path d="M 290 170 L 292 174 L 296 175 L 293 178 L 294 182 L 290 180 L 286 182 L 287 178 L 284 175 L 288 174 Z"/>
+    <path d="M 60 160 L 62 164 L 66 165 L 63 168 L 64 172 L 60 170 L 56 172 L 57 168 L 54 165 L 58 164 Z"/>
+  </g>
+</svg>

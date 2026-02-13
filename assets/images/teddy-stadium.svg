@@ -1,0 +1,153 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Teddy Stadium - Beitar Jerusalem Home Stadium -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B0E0E6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grassGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#90EE90;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="standGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE44D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="standBlack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky background -->
+  <rect x="0" y="0" width="600" height="250" fill="url(#skyGradient)"/>
+  
+  <!-- Stadium structure - Left stand -->
+  <g>
+    <path d="M 20 150 L 20 80 L 200 60 L 200 130 Z" fill="url(#standBlack)" stroke="#000000" stroke-width="2"/>
+    <!-- Seats rows (yellow and black) -->
+    <rect x="30" y="90" width="160" height="8" fill="url(#standGold)"/>
+    <rect x="30" y="100" width="160" height="8" fill="url(#standBlack)"/>
+    <rect x="30" y="110" width="160" height="8" fill="url(#standGold)"/>
+    <rect x="30" y="120" width="160" height="8" fill="url(#standBlack)"/>
+    <rect x="30" y="130" width="160" height="8" fill="url(#standGold)"/>
+  </g>
+  
+  <!-- Stadium structure - Right stand -->
+  <g>
+    <path d="M 580 150 L 580 80 L 400 60 L 400 130 Z" fill="url(#standBlack)" stroke="#000000" stroke-width="2"/>
+    <!-- Seats rows (yellow and black) -->
+    <rect x="410" y="90" width="160" height="8" fill="url(#standGold)"/>
+    <rect x="410" y="100" width="160" height="8" fill="url(#standBlack)"/>
+    <rect x="410" y="110" width="160" height="8" fill="url(#standGold)"/>
+    <rect x="410" y="120" width="160" height="8" fill="url(#standBlack)"/>
+    <rect x="410" y="130" width="160" height="8" fill="url(#standGold)"/>
+  </g>
+  
+  <!-- Roof structure -->
+  <path d="M 10 80 L 200 55 L 220 55 L 220 70 L 30 95 Z" fill="#4a4a4a" stroke="#000000" stroke-width="1"/>
+  <path d="M 590 80 L 400 55 L 380 55 L 380 70 L 570 95 Z" fill="#4a4a4a" stroke="#000000" stroke-width="1"/>
+  
+  <!-- Floodlights -->
+  <g>
+    <rect x="15" y="30" width="5" height="50" fill="#4a4a4a"/>
+    <ellipse cx="17.5" cy="30" rx="12" ry="6" fill="#FFD700" opacity="0.7"/>
+    <rect x="580" y="30" width="5" height="50" fill="#4a4a4a"/>
+    <ellipse cx="582.5" cy="30" rx="12" ry="6" fill="#FFD700" opacity="0.7"/>
+  </g>
+  
+  <!-- Soccer field -->
+  <rect x="100" y="250" width="400" height="150" fill="url(#grassGradient)"/>
+  
+  <!-- Field markings (white lines) -->
+  <g stroke="#FFFFFF" stroke-width="3" fill="none">
+    <!-- Perimeter -->
+    <rect x="105" y="255" width="390" height="140"/>
+    <!-- Center line -->
+    <line x1="300" y1="255" x2="300" y2="395"/>
+    <!-- Center circle -->
+    <circle cx="300" cy="325" r="40"/>
+    <circle cx="300" cy="325" r="2" fill="#FFFFFF"/>
+    <!-- Penalty boxes -->
+    <rect x="105" y="285" width="60" height="80"/>
+    <rect x="435" y="285" width="60" height="80"/>
+    <!-- Goal areas -->
+    <rect x="105" y="305" width="25" height="40"/>
+    <rect x="470" y="305" width="25" height="40"/>
+  </g>
+  
+  <!-- Goals -->
+  <g stroke="#FFFFFF" stroke-width="2" fill="none">
+    <!-- Left goal -->
+    <rect x="95" y="305" width="10" height="40"/>
+    <line x1="95" y1="305" x2="85" y2="300"/>
+    <line x1="95" y1="345" x2="85" y2="350"/>
+    <line x1="85" y1="300" x2="85" y2="350"/>
+    
+    <!-- Right goal -->
+    <rect x="495" y="305" width="10" height="40"/>
+    <line x1="505" y1="305" x2="515" y2="300"/>
+    <line x1="505" y1="345" x2="515" y2="350"/>
+    <line x1="515" y1="300" x2="515" y2="350"/>
+  </g>
+  
+  <!-- Grass patterns (stripes) -->
+  <g opacity="0.3">
+    <rect x="100" y="250" width="50" height="150" fill="#228B22"/>
+    <rect x="200" y="250" width="50" height="150" fill="#228B22"/>
+    <rect x="300" y="250" width="50" height="150" fill="#228B22"/>
+    <rect x="400" y="250" width="50" height="150" fill="#228B22"/>
+  </g>
+  
+  <!-- Corner flags -->
+  <g>
+    <line x1="105" y1="255" x2="100" y2="245" stroke="#000000" stroke-width="1"/>
+    <polygon points="100,245 105,243 105,247" fill="#FFD700"/>
+    
+    <line x1="495" y1="255" x2="500" y2="245" stroke="#000000" stroke-width="1"/>
+    <polygon points="500,245 495,243 495,247" fill="#FFD700"/>
+    
+    <line x1="105" y1="395" x2="100" y2="400" stroke="#000000" stroke-width="1"/>
+    <polygon points="100,400 105,398 105,402" fill="#FFD700"/>
+    
+    <line x1="495" y1="395" x2="500" y2="400" stroke="#000000" stroke-width="1"/>
+    <polygon points="500,400 495,398 495,402" fill="#FFD700"/>
+  </g>
+  
+  <!-- Crowd representation (yellow and black sections) -->
+  <g opacity="0.8">
+    <!-- Left crowd -->
+    <rect x="25" y="85" width="35" height="40" fill="url(#standGold)"/>
+    <rect x="65" y="85" width="35" height="40" fill="url(#standBlack)"/>
+    <rect x="105" y="85" width="35" height="40" fill="url(#standGold)"/>
+    <rect x="145" y="85" width="35" height="40" fill="url(#standBlack)"/>
+    
+    <!-- Right crowd -->
+    <rect x="415" y="85" width="35" height="40" fill="url(#standGold)"/>
+    <rect x="455" y="85" width="35" height="40" fill="url(#standBlack)"/>
+    <rect x="495" y="85" width="35" height="40" fill="url(#standGold)"/>
+    <rect x="535" y="85" width="35" height="40" fill="url(#standBlack)"/>
+  </g>
+  
+  <!-- Stadium name banner -->
+  <g>
+    <rect x="220" y="150" width="160" height="30" fill="#000000" stroke="#FFD700" stroke-width="2"/>
+    <text x="300" y="172" font-family="Arial, sans-serif" font-size="16" font-weight="bold" 
+          fill="#FFD700" text-anchor="middle">TEDDY STADIUM</text>
+  </g>
+  
+  <!-- Beitar flags in stands -->
+  <g>
+    <line x1="50" y1="90" x2="50" y2="75" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="50" y="75" width="15" height="10" fill="#FFD700"/>
+    
+    <line x1="120" y1="90" x2="120" y2="75" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="120" y="75" width="15" height="10" fill="#000000"/>
+    
+    <line x1="470" y1="90" x2="470" y2="75" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="470" y="75" width="15" height="10" fill="#FFD700"/>
+    
+    <line x1="540" y1="90" x2="540" y2="75" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="540" y="75" width="15" height="10" fill="#000000"/>
+  </g>
+</svg>

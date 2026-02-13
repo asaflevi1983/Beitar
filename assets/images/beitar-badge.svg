@@ -1,0 +1,65 @@
+<svg width="250" height="280" viewBox="0 0 250 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Realistic Team Badge with detailed elements -->
+  <defs>
+    <linearGradient id="badgeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE44D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="badgeBlack" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="shine" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Main shield background -->
+  <path d="M125 10 L230 50 L230 150 Q230 210 125 270 Q20 210 20 150 L20 50 Z" 
+        fill="url(#badgeBlack)" stroke="url(#badgeGold)" stroke-width="5"/>
+  
+  <!-- Yellow/gold trim inner border -->
+  <path d="M125 25 L220 60 L220 145 Q220 200 125 255 Q30 200 30 145 L30 60 Z" 
+        fill="none" stroke="url(#badgeGold)" stroke-width="2"/>
+  
+  <!-- Black and yellow horizontal stripes (team pattern) -->
+  <rect x="40" y="70" width="170" height="20" fill="url(#badgeGold)" opacity="0.9"/>
+  <rect x="40" y="95" width="170" height="20" fill="#000000" opacity="0.9"/>
+  <rect x="40" y="120" width="170" height="20" fill="url(#badgeGold)" opacity="0.9"/>
+  
+  <!-- Central Star of David with detail -->
+  <g transform="translate(125, 165)" fill="url(#badgeGold)" stroke="url(#badgeGold)" stroke-width="3">
+    <polygon points="0,-25 15,0 -15,0"/>
+    <polygon points="0,25 -15,0 15,0"/>
+    <!-- Inner details -->
+    <circle cx="0" cy="0" r="3" fill="#FFD700"/>
+  </g>
+  
+  <!-- Soccer ball icon at top -->
+  <g transform="translate(125, 40)">
+    <circle cx="0" cy="0" r="12" fill="#FFFFFF" stroke="url(#badgeGold)" stroke-width="2"/>
+    <polygon points="0,-8 4,-4 3,2 -3,2 -4,-4" fill="#000000"/>
+    <polygon points="-6,0 -3,-6 3,-6 6,0 3,6 -3,6" fill="none" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- Hebrew text בית"ר with shadow -->
+  <text x="125" y="210" font-family="Arial, sans-serif" font-size="28" font-weight="bold" 
+        fill="#000000" text-anchor="middle" opacity="0.3">בית"ר</text>
+  <text x="125" y="208" font-family="Arial, sans-serif" font-size="28" font-weight="bold" 
+        fill="url(#badgeGold)" text-anchor="middle">בית"ר</text>
+  
+  <!-- ירושלים (Jerusalem in Hebrew) -->
+  <text x="125" y="235" font-family="Arial, sans-serif" font-size="20" font-weight="bold" 
+        fill="url(#badgeGold)" text-anchor="middle">ירושלים</text>
+  
+  <!-- Founded year banner -->
+  <g>
+    <rect x="85" y="245" width="80" height="20" fill="url(#badgeGold)" stroke="#000000" stroke-width="1"/>
+    <text x="125" y="259" font-family="Arial, sans-serif" font-size="12" font-weight="bold" 
+          fill="#000000" text-anchor="middle">1936</text>
+  </g>
+  
+  <!-- Light shine effect -->
+  <ellipse cx="125" cy="80" rx="80" ry="60" fill="url(#shine)"/>
+</svg>

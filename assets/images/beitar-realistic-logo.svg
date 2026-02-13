@@ -1,0 +1,63 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Realistic Beitar Jerusalem Logo -->
+  <defs>
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE44D;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="blackGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  
+  <!-- Outer shield shape with gradient -->
+  <path d="M150 20 L250 60 L250 160 Q250 220 150 280 Q50 220 50 160 L50 60 Z" 
+        fill="url(#blackGradient)" stroke="url(#goldGradient)" stroke-width="6" filter="url(#shadow)"/>
+  
+  <!-- Inner shield border -->
+  <path d="M150 35 L235 70 L235 155 Q235 210 150 265 Q65 210 65 155 L65 70 Z" 
+        fill="none" stroke="url(#goldGradient)" stroke-width="3" opacity="0.7"/>
+  
+  <!-- Large Star of David (Magen David) -->
+  <g fill="url(#goldGradient)" stroke="url(#goldGradient)" stroke-width="2" opacity="0.95">
+    <!-- Upper triangle -->
+    <polygon points="150,80 180,140 120,140" fill="url(#goldGradient)"/>
+    <!-- Lower triangle -->
+    <polygon points="150,180 120,120 180,120" fill="url(#goldGradient)"/>
+  </g>
+  
+  <!-- Crown elements at top -->
+  <g fill="url(#goldGradient)">
+    <circle cx="130" cy="55" r="4"/>
+    <circle cx="150" cy="50" r="5"/>
+    <circle cx="170" cy="55" r="4"/>
+    <rect x="148" y="50" width="4" height="10"/>
+  </g>
+  
+  <!-- Hebrew text בית"ר -->
+  <text x="150" y="210" font-family="Arial, sans-serif" font-size="32" font-weight="bold" 
+        fill="url(#goldGradient)" text-anchor="middle" letter-spacing="2">בית"ר</text>
+  
+  <!-- JERUSALEM in English -->
+  <text x="150" y="240" font-family="Arial, sans-serif" font-size="18" font-weight="bold" 
+        fill="url(#goldGradient)" text-anchor="middle" letter-spacing="3">JERUSALEM</text>
+  
+  <!-- Decorative golden stripes on sides -->
+  <rect x="70" y="100" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  <rect x="70" y="120" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  <rect x="70" y="140" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  
+  <rect x="205" y="100" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  <rect x="205" y="120" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  <rect x="205" y="140" width="25" height="4" fill="url(#goldGradient)" opacity="0.6"/>
+  
+  <!-- Est. 1936 at bottom -->
+  <text x="150" y="265" font-family="Arial, sans-serif" font-size="12" font-weight="normal" 
+        fill="url(#goldGradient)" text-anchor="middle" opacity="0.8">EST. 1936</text>
+</svg>
