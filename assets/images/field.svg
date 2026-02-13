@@ -1,0 +1,31 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- Football field from above -->
+  
+  <!-- Field -->
+  <rect x="10" y="10" width="180" height="130" fill="#2d5016" stroke="#FFFFFF" stroke-width="3"/>
+  
+  <!-- Center line -->
+  <line x1="100" y1="10" x2="100" y2="140" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- Center circle -->
+  <circle cx="100" cy="75" r="20" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <circle cx="100" cy="75" r="2" fill="#FFFFFF"/>
+  
+  <!-- Left penalty area -->
+  <rect x="10" y="45" width="30" height="60" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <rect x="10" y="60" width="15" height="30" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- Right penalty area -->
+  <rect x="160" y="45" width="30" height="60" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <rect x="175" y="60" width="15" height="30" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- Corner arcs -->
+  <path d="M 10 10 Q 15 10 15 15" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M 190 10 Q 185 10 185 15" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M 10 140 Q 15 140 15 135" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  <path d="M 190 140 Q 185 140 185 135" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- Goals -->
+  <rect x="5" y="65" width="5" height="20" fill="#FFD700" stroke="#000000" stroke-width="1"/>
+  <rect x="190" y="65" width="5" height="20" fill="#FFD700" stroke="#000000" stroke-width="1"/>
+</svg>

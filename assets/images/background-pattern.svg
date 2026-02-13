@@ -1,0 +1,15 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Diagonal stripes pattern in Beitar colors -->
+  <defs>
+    <pattern id="diagonalStripes" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect x="0" y="0" width="20" height="40" fill="#000000"/>
+      <rect x="20" y="0" width="20" height="40" fill="#FFD700"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background with pattern -->
+  <rect width="400" height="400" fill="url(#diagonalStripes)"/>
+  
+  <!-- Optional: Add some transparency overlay -->
+  <rect width="400" height="400" fill="#FFFFFF" opacity="0.1"/>
+</svg>

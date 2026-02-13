@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בית"ר ירושלים - גלריית תמונות</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #2d2d2d 50%, #FFD700 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(255, 215, 0, 0.5);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #FFD700;
+            background: #000000;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .image-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #FFD700;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+            border-color: #000000;
+        }
+        
+        .image-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        .image-card h3 {
+            color: #000000;
+            margin-bottom: 8px;
+            font-size: 1.2em;
+        }
+        
+        .image-card p {
+            color: #666;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .header-logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .header-logo img {
+            max-width: 150px;
+            height: auto;
+            filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.3));
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 3px solid #FFD700;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .colors-demo {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .color-box {
+            width: 100px;
+            height: 50px;
+            border-radius: 8px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .color-black {
+            background: #000000;
+        }
+        
+        .color-yellow {
+            background: #FFD700;
+            color: #000000;
+            text-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-logo">
+            <img src="assets/images/beitar-logo.svg" alt="לוגו בית"ר ירושלים">
+        </div>
+        
+        <h1>🏆 בית"ר ירושלים 🏆</h1>
+        <div class="subtitle">גלריית תמונות - לומדים מספרים עם כדורגל</div>
+        
+        <div class="colors-demo">
+            <div class="color-box color-black">שחור</div>
+            <div class="color-box color-yellow">צהוב</div>
+        </div>
+        
+        <div class="gallery">
+            <div class="image-card">
+                <img src="assets/images/beitar-logo.svg" alt="לוגו בית"ר">
+                <h3>לוגו בית"ר ירושלים</h3>
+                <p>סמל הקבוצה בצבעים השחור והצהוב המסורתיים</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/football.svg" alt="כדורגל">
+                <h3>כדורגל</h3>
+                <p>כדור בצבעי בית"ר - שחור וצהוב</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/goal.svg" alt="שער">
+                <h3>שער</h3>
+                <p>שער כדורגל עם רשת וכדור</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/trophy.svg" alt="גביע">
+                <h3>גביע</h3>
+                <p>גביע הזהב - סמל לניצחון ולהישגים</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/jersey.svg" alt="חולצה">
+                <h3>חולצת משחק</h3>
+                <p>חולצת בית"ר עם פסים שחורים וצהובים</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/field.svg" alt="מגרש">
+                <h3>מגרש כדורגל</h3>
+                <p>מגרש מלא עם כל הסימונים</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/star.svg" alt="כוכב">
+                <h3>כוכב הישגים</h3>
+                <p>כוכב זהב לסימון נקודות ותשובות נכונות</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/whistle.svg" alt="שריקה">
+                <h3>שריקת שופט</h3>
+                <p>שריקה למצב חידון ותחרויות</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/corner-flag.svg" alt="דגל פינה">
+                <h3>דגל פינה</h3>
+                <p>דגל פינת מגרש בצבעי בית"ר</p>
+            </div>
+            
+            <div class="image-card">
+                <img src="assets/images/background-pattern.svg" alt="דוגמת רקע" style="max-height: 150px;">
+                <h3>דוגמת רקע</h3>
+                <p>פסים אלכסוניים שחורים וצהובים לרקע</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>בית"ר ירושלים</strong> - לומדים מספרים 1-20 בכיף! ⚽</p>
+            <p>כל התמונות בפורמט SVG לאיכות מושלמת בכל גודל</p>
+        </footer>
+    </div>
+</body>
+</html>
