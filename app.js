@@ -22,6 +22,11 @@ const hebrewNumbers = {
     20: 'עֶשְׂרִים'
 };
 
+// Speech synthesis settings
+const SPEECH_RATE = 0.8;
+const SPEECH_PITCH = 1.0;
+const SPEECH_LANG = 'he-IL';
+
 // Global state
 let currentNumber = 1;
 let quizScore = 0;
@@ -188,8 +193,14 @@ function handleQuizAnswer(selectedAnswer, btn) {
         opt.classList.add('disabled');
         if (opt === btn) {
             opt.classList.add(selectedAnswer === currentQuizAnswer ? 'correct' : 'wrong');
-        } else if (parseInt(opt.textContent) === currentQuizAnswer || opt.textContent === hebrewNumbers[currentQuizAnswer]) {
-            opt.classList.add('correct');
+        } else {
+            // Check if this option is the correct answer (handles both number and Hebrew word)
+            const optValue = parseInt(opt.textContent);
+            const isCorrect = (!isNaN(optValue) && optValue === currentQuizAnswer) || 
+                            opt.textContent === hebrewNumbers[currentQuizAnswer];
+            if (isCorrect) {
+                opt.classList.add('correct');
+            }
         }
     });
     
@@ -366,9 +377,9 @@ function speakText(text) {
         window.speechSynthesis.cancel();
         
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'he-IL';
-        utterance.rate = 0.8;
-        utterance.pitch = 1.0;
+        utterance.lang = SPEECH_LANG;
+        utterance.rate = SPEECH_RATE;
+        utterance.pitch = SPEECH_PITCH;
         
         // Try to use Hebrew voice if available
         const voices = window.speechSynthesis.getVoices();
