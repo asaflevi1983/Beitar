@@ -250,7 +250,7 @@ function handleQuizAnswer(selectedAnswer, btn) {
         quizStreak++;
         feedbackEl.textContent = `נכון! 🎉 (+10 נקודות)`;
         feedbackEl.className = 'quiz-feedback correct';
-        speakText('נכון מצוין');
+        speakText('אני אוהב אותך ביתר , ביתר אלופה , ביתר מקום ראשון');
     } else {
         quizStreak = 0;
         feedbackEl.textContent = `לא נכון. התשובה הנכונה: ${hebrewNumbers[currentQuizAnswer]} (${currentQuizAnswer})`;
@@ -423,7 +423,7 @@ function handleMemoryCardClick(index) {
                     quizScore += 100;
                     updateScoreDisplay();
                     saveScores();
-                    speakText('מעולה');
+                    speakText('אני אוהב אותך ביתר , ביתר אלופה , ביתר מקום ראשון');
                 }, 300);
             }
         } else {
@@ -582,7 +582,7 @@ function handleLettersMemoryCardClick(index) {
                     quizScore += 100;
                     updateScoreDisplay();
                     saveScores();
-                    speakText('מעולה');
+                    speakText('אני אוהב אותך ביתר , ביתר אלופה , ביתר מקום ראשון');
                 }, 300);
             }
         } else {
