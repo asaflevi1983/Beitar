@@ -616,7 +616,7 @@ function initLettersMode() {
     
     document.getElementById('letter-speak-btn').addEventListener('click', () => {
         const letter = hebrewAlphabet[currentLetter];
-        speakText(`${letter.char} ${letter.name}`);
+        speakText(letter.name);
     });
 }
 
