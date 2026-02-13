@@ -170,7 +170,9 @@ function initQuizMode() {
 
 function generateQuizQuestion() {
     const quizType = document.getElementById('quiz-type').value;
-    currentQuizAnswer = Math.floor(Math.random() * 30) + 1;
+    // Limit count-balls to max 10 for easier counting
+    const maxNumber = quizType === 'count-balls' ? 10 : 30;
+    currentQuizAnswer = Math.floor(Math.random() * maxNumber) + 1;
     
     const promptEl = document.getElementById('quiz-prompt');
     const ballsEl = document.getElementById('quiz-balls');
@@ -194,7 +196,7 @@ function generateQuizQuestion() {
             ball.style.animationDelay = `${i * 0.05}s`;
             ballsEl.appendChild(ball);
         }
-        options = generateOptions(currentQuizAnswer, false);
+        options = generateOptions(currentQuizAnswer, false, quizType);
     }
     
     // Create option buttons
@@ -207,13 +209,15 @@ function generateQuizQuestion() {
     });
 }
 
-function generateOptions(correctAnswer, useWords) {
+function generateOptions(correctAnswer, useWords, quizType) {
     const options = [{ value: correctAnswer, text: useWords ? hebrewNumbers[correctAnswer] : correctAnswer }];
     
     // Generate 3 random wrong answers
+    // Limit to max 10 for count-balls mode, otherwise use 30
+    const maxNumber = quizType === 'count-balls' ? 10 : 30;
     const used = new Set([correctAnswer]);
     while (options.length < 4) {
-        const random = Math.floor(Math.random() * 30) + 1;
+        const random = Math.floor(Math.random() * maxNumber) + 1;
         if (!used.has(random)) {
             used.add(random);
             options.push({ value: random, text: useWords ? hebrewNumbers[random] : random });
