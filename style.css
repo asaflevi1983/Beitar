@@ -40,6 +40,24 @@ header h1 {
     color: #fff;
 }
 
+.dedication {
+    font-size: 1.3rem;
+    color: #ffd700;
+    margin-top: 15px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+    }
+}
+
 /* Mode Navigation */
 .mode-nav {
     display: flex;
