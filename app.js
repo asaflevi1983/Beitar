@@ -63,6 +63,15 @@ const hebrewAlphabet = [
     { char: 'ת', name: 'תָּו' }
 ];
 
+// Final letters (sofit) pairs - mapping from final to regular form
+const sofitLetters = [
+    { final: 'ך', regular: 'כ', name: 'כַּף' },
+    { final: 'ם', regular: 'מ', name: 'מֵם' },
+    { final: 'ן', regular: 'נ', name: 'נוּן' },
+    { final: 'ף', regular: 'פ', name: 'פֵּא' },
+    { final: 'ץ', regular: 'צ', name: 'צַדִי' }
+];
+
 // Speech synthesis settings
 const SPEECH_RATE = 0.8;
 const SPEECH_PITCH = 1.0;
@@ -164,15 +173,14 @@ function initQuizMode() {
     generateQuizQuestion();
     
     document.getElementById('quiz-speak-btn').addEventListener('click', () => {
-        speakText('ספור את הכדורים');
+        const quizType = document.getElementById('quiz-type').value;
+        const promptEl = document.getElementById('quiz-prompt');
+        speakText(promptEl.textContent);
     });
 }
 
 function generateQuizQuestion() {
     const quizType = document.getElementById('quiz-type').value;
-    // Limit count-balls to max 10 for easier counting
-    const maxNumber = quizType === 'count-balls' ? 10 : 30;
-    currentQuizAnswer = Math.floor(Math.random() * maxNumber) + 1;
     
     const promptEl = document.getElementById('quiz-prompt');
     const ballsEl = document.getElementById('quiz-balls');
@@ -188,6 +196,10 @@ function generateQuizQuestion() {
     let options = [];
     
     if (quizType === 'count-balls') {
+        // Limit count-balls to max 10 for easier counting
+        const maxNumber = 10;
+        currentQuizAnswer = Math.floor(Math.random() * maxNumber) + 1;
+        
         promptEl.textContent = 'כמה כדורים יש?';
         for (let i = 0; i < currentQuizAnswer; i++) {
             const ball = document.createElement('span');
@@ -197,6 +209,29 @@ function generateQuizQuestion() {
             ballsEl.appendChild(ball);
         }
         options = generateOptions(currentQuizAnswer, false, quizType);
+    } else if (quizType === 'match-sofit') {
+        // Pick a random final letter
+        const randomIndex = Math.floor(Math.random() * sofitLetters.length);
+        const sofitPair = sofitLetters[randomIndex];
+        currentQuizAnswer = sofitPair.regular;
+        
+        promptEl.textContent = 'מה האות הרגילה של האות הסופית?';
+        
+        // Display the final letter
+        const letterDisplay = document.createElement('div');
+        letterDisplay.className = 'letter-large';
+        letterDisplay.textContent = sofitPair.final;
+        letterDisplay.style.fontSize = '120px';
+        letterDisplay.style.margin = '20px auto';
+        ballsEl.appendChild(letterDisplay);
+        
+        // Generate options: all 5 regular letters from sofit pairs
+        options = sofitLetters.map(pair => ({
+            value: pair.regular,
+            text: pair.regular
+        }));
+        // Shuffle options
+        options = options.sort(() => Math.random() - 0.5);
     }
     
     // Create option buttons
@@ -229,6 +264,7 @@ function generateOptions(correctAnswer, useWords, quizType) {
 }
 
 function handleQuizAnswer(selectedAnswer, btn) {
+    const quizType = document.getElementById('quiz-type').value;
     const optionsEl = document.getElementById('quiz-options');
     const feedbackEl = document.getElementById('quiz-feedback');
     const allOptions = optionsEl.querySelectorAll('.quiz-option');
@@ -239,10 +275,16 @@ function handleQuizAnswer(selectedAnswer, btn) {
         if (opt === btn) {
             opt.classList.add(selectedAnswer === currentQuizAnswer ? 'correct' : 'wrong');
         } else {
-            // Check if this option is the correct answer (handles both number and Hebrew word)
-            const optValue = parseInt(opt.textContent);
-            const isCorrect = (!isNaN(optValue) && optValue === currentQuizAnswer) || 
-                            opt.textContent === hebrewNumbers[currentQuizAnswer];
+            // Check if this option is the correct answer
+            let isCorrect = false;
+            if (quizType === 'match-sofit') {
+                isCorrect = opt.textContent === currentQuizAnswer;
+            } else {
+                // handles both number and Hebrew word for count-balls mode
+                const optValue = parseInt(opt.textContent);
+                isCorrect = (!isNaN(optValue) && optValue === currentQuizAnswer) || 
+                           opt.textContent === hebrewNumbers[currentQuizAnswer];
+            }
             if (isCorrect) {
                 opt.classList.add('correct');
             }
@@ -257,7 +299,11 @@ function handleQuizAnswer(selectedAnswer, btn) {
         speakText('אני אוהב אותך ביתר , ביתר אלופה , ביתר מקום ראשון');
     } else {
         quizStreak = 0;
-        feedbackEl.textContent = `לא נכון. התשובה הנכונה: ${hebrewNumbers[currentQuizAnswer]} (${currentQuizAnswer})`;
+        if (quizType === 'match-sofit') {
+            feedbackEl.textContent = `לא נכון. התשובה הנכונה: ${currentQuizAnswer}`;
+        } else {
+            feedbackEl.textContent = `לא נכון. התשובה הנכונה: ${hebrewNumbers[currentQuizAnswer]} (${currentQuizAnswer})`;
+        }
         feedbackEl.className = 'quiz-feedback wrong';
         speakText('לא נכון');
     }
