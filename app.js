@@ -772,7 +772,7 @@ function generatePlayerQuestion() {
     
     // Set image and era
     document.getElementById('player-image').src = currentPlayer.image;
-    document.getElementById('player-era').textContent = 'שחקן';
+    document.getElementById('player-era').textContent = '';
     
     // Generate 4 options (1 correct + 3 wrong)
     const wrongPlayers = beitarPlayers.filter(p => p.name !== currentPlayer.name);
