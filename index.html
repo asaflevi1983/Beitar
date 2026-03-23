@@ -24,6 +24,7 @@
             <button class="mode-btn" data-mode="memory">זיכרון</button>
             <button class="mode-btn" data-mode="letters">אותיות</button>
             <button class="mode-btn" data-mode="letters-memory">זיכרון אותיות</button>
+            <button class="mode-btn" data-mode="players">מי השחקן?</button>
         </nav>
 
         <!-- Learn Mode -->
@@ -135,6 +136,24 @@
             <div class="memory-grid" id="letters-memory-grid"></div>
             
             <div class="memory-feedback" id="letters-memory-feedback"></div>
+        </section>
+        <!-- Players Game Mode -->
+        <section id="players-mode" class="mode-section">
+            <div class="quiz-header">
+                <div class="score-display">
+                    <span>נקודות: <strong id="players-score">0</strong></span>
+                    <span>רצף: <strong id="players-streak">0</strong></span>
+                </div>
+            </div>
+            
+            <div class="player-display">
+                <div class="player-era-badge" id="player-era"></div>
+                <img class="player-image" id="player-image" src="" alt="שחקן">
+            </div>
+            
+            <div class="quiz-options" id="players-options"></div>
+            
+            <div class="quiz-feedback" id="players-feedback"></div>
         </section>
     </div>
 
