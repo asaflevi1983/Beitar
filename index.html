@@ -25,6 +25,7 @@
             <button class="mode-btn" data-mode="letters">אותיות</button>
             <button class="mode-btn" data-mode="letters-memory">זיכרון אותיות</button>
             <button class="mode-btn" data-mode="players">מי השחקן?</button>
+            <button class="mode-btn" data-mode="players-memory">זיכרון שחקנים</button>
         </nav>
 
         <!-- Learn Mode -->
@@ -156,6 +157,30 @@
             <div class="quiz-feedback" id="players-feedback"></div>
         </section>
     </div>
+
+        <!-- Players Memory Game Mode -->
+        <section id="players-memory-mode" class="mode-section">
+            <div class="memory-header">
+                <h2>משחק זיכרון - שחקנים</h2>
+                <div class="memory-stats">
+                    <span>מהלכים: <strong id="players-memory-moves">0</strong></span>
+                    <span>זוגות: <strong id="players-memory-pairs">0</strong></span>
+                </div>
+            </div>
+            
+            <div class="memory-controls">
+                <label>גודל לוח:</label>
+                <select id="players-memory-size">
+                    <option value="4">4x4 (8 זוגות)</option>
+                    <option value="6">6x6 (18 זוגות)</option>
+                </select>
+                <button class="btn btn-secondary" id="players-memory-reset-btn">🔄 משחק חדש</button>
+            </div>
+            
+            <div class="memory-grid players-memory-grid" id="players-memory-grid"></div>
+            
+            <div class="memory-feedback" id="players-memory-feedback"></div>
+        </section>
 
     <script src="app.js"></script>
 </body>

@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initLettersMode();
     initLettersMemoryMode();
     initPlayersMode();
+    initPlayersMemoryMode();
     loadScores();
 });
 
@@ -829,4 +830,129 @@ function handlePlayerAnswer(selectedName, btn) {
     setTimeout(() => {
         generatePlayerQuestion();
     }, 2000);
+}
+
+// Players Memory Game Mode
+function initPlayersMemoryMode() {
+    let cards = [];
+    let flippedCards = [];
+    let matchedPairs = 0;
+    let moves = 0;
+    let totalPairs = 0;
+    let lockBoard = false;
+
+    const grid = document.getElementById('players-memory-grid');
+    const movesEl = document.getElementById('players-memory-moves');
+    const pairsEl = document.getElementById('players-memory-pairs');
+    const feedbackEl = document.getElementById('players-memory-feedback');
+    const sizeSelect = document.getElementById('players-memory-size');
+    const resetBtn = document.getElementById('players-memory-reset-btn');
+
+    function createGame() {
+        const gridSize = parseInt(sizeSelect.value);
+        totalPairs = (gridSize * gridSize) / 2;
+        matchedPairs = 0;
+        moves = 0;
+        flippedCards = [];
+        lockBoard = false;
+        movesEl.textContent = '0';
+        pairsEl.textContent = '0';
+        feedbackEl.textContent = '';
+        feedbackEl.className = 'memory-feedback';
+
+        // Pick random players
+        const shuffledPlayers = [...beitarPlayers].sort(() => Math.random() - 0.5).slice(0, totalPairs);
+
+        // Create pairs: one card with image, one card with name
+        cards = [];
+        shuffledPlayers.forEach((player, i) => {
+            cards.push({ id: i, type: 'image', player: player, pairId: i });
+            cards.push({ id: i, type: 'name', player: player, pairId: i });
+        });
+
+        // Shuffle cards
+        cards.sort(() => Math.random() - 0.5);
+
+        // Build grid
+        grid.innerHTML = '';
+        grid.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+
+        cards.forEach((card, index) => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'memory-card players-memory-card';
+            cardEl.dataset.index = index;
+
+            const inner = document.createElement('div');
+            inner.className = 'memory-card-inner';
+
+            const front = document.createElement('div');
+            front.className = 'memory-card-front';
+            front.textContent = '⚽';
+
+            const back = document.createElement('div');
+            back.className = 'memory-card-back';
+
+            if (card.type === 'image') {
+                const img = document.createElement('img');
+                img.src = card.player.image;
+                img.alt = card.player.name;
+                img.className = 'player-memory-img';
+                back.appendChild(img);
+            } else {
+                back.textContent = card.player.name;
+                back.classList.add('player-memory-name');
+            }
+
+            inner.appendChild(front);
+            inner.appendChild(back);
+            cardEl.appendChild(inner);
+
+            cardEl.addEventListener('click', () => flipCard(cardEl, index));
+            grid.appendChild(cardEl);
+        });
+    }
+
+    function flipCard(cardEl, index) {
+        if (lockBoard) return;
+        if (cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+
+        cardEl.classList.add('flipped');
+        flippedCards.push({ el: cardEl, index: index, card: cards[index] });
+
+        if (flippedCards.length === 2) {
+            moves++;
+            movesEl.textContent = moves;
+            lockBoard = true;
+
+            const [first, second] = flippedCards;
+
+            if (first.card.pairId === second.card.pairId) {
+                // Match!
+                first.el.classList.add('matched');
+                second.el.classList.add('matched');
+                matchedPairs++;
+                pairsEl.textContent = matchedPairs;
+                flippedCards = [];
+                lockBoard = false;
+
+                if (matchedPairs === totalPairs) {
+                    feedbackEl.textContent = `🎊 כל הכבוד! סיימת ב-${moves} מהלכים! 🎊`;
+                    feedbackEl.className = 'memory-feedback correct';
+                    speakText('כל הכבוד, אני אוהב אותך ביתר');
+                }
+            } else {
+                // No match
+                setTimeout(() => {
+                    first.el.classList.remove('flipped');
+                    second.el.classList.remove('flipped');
+                    flippedCards = [];
+                    lockBoard = false;
+                }, 1000);
+            }
+        }
+    }
+
+    resetBtn.addEventListener('click', createGame);
+    sizeSelect.addEventListener('change', createGame);
+    createGame();
 }

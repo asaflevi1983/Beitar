@@ -734,3 +734,35 @@ header h1 {
         max-height: 300px;
     }
 }
+
+/* Players Memory Game */
+.players-memory-grid {
+    gap: 8px !important;
+}
+
+.players-memory-card {
+    aspect-ratio: 3/4;
+}
+
+.player-memory-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.player-memory-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    padding: 4px;
+    color: #1a1a2e;
+    background: linear-gradient(135deg, #ffd700, #ffed4a);
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
