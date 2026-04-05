@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>בית"ר ירושלים - לומדים מספרים</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Preloader / Entry Sequence -->
+    <div class="preloader" id="preloader">
+        <img src="assets/images/BeitarJerusalemCrestStar2020.png" alt="Beitar Jerusalem Logo">
+        <div class="shimmer-text">⚽ בית"ר ירושלים ⚽</div>
+    </div>
+
     <div class="container">
         <header>
             <div class="header-images">
@@ -138,6 +147,7 @@
             
             <div class="memory-feedback" id="letters-memory-feedback"></div>
         </section>
+
         <!-- Players Game Mode -->
         <section id="players-mode" class="mode-section">
             <div class="quiz-header">
@@ -156,7 +166,6 @@
             
             <div class="quiz-feedback" id="players-feedback"></div>
         </section>
-    </div>
 
         <!-- Players Memory Game Mode -->
         <section id="players-memory-mode" class="mode-section">
@@ -181,7 +190,27 @@
             
             <div class="memory-feedback" id="players-memory-feedback"></div>
         </section>
+    </div>
 
     <script src="app.js"></script>
+    <script>
+        // Entry animation — dismiss preloader after fonts load
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hide');
+                setTimeout(() => preloader.remove(), 600);
+            }, 1200);
+        });
+
+        // Button ripple effect — track mouse position for radial highlight
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mousemove', e => {
+                const rect = btn.getBoundingClientRect();
+                btn.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+                btn.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+            });
+        });
+    </script>
 </body>
 </html>
