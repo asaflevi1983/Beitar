@@ -1162,10 +1162,10 @@ function initRunnerMode() {
         playerJump = 0;
         jumpVel = 0;
         isJumping = false;
-        baseSpeed = 0.8;
+        baseSpeed = 2;
         speed = baseSpeed;
-        maxSpeed = 3;
-        accelRate = 0.0008;
+        maxSpeed = 6;
+        accelRate = 0.002;
         obstacles = [];
         collectibles = [];
         particles = [];
@@ -1254,7 +1254,7 @@ function initRunnerMode() {
         }
 
         // Move obstacles & collectibles toward player
-        const moveSpeed = speed * 0.012 * dt;
+        const moveSpeed = speed * 0.018 * dt;
 
         for (let i = obstacles.length - 1; i >= 0; i--) {
             const o = obstacles[i];
