@@ -1666,6 +1666,7 @@ function initRunnerMode() {
                 if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
                 if (gameoverTimeout) clearTimeout(gameoverTimeout);
                 gameoverTimeout = setTimeout(() => {
+                    exitFullscreen();
                     if (section.classList.contains('active')) showScreen('gameover');
                 }, 400);
             }
