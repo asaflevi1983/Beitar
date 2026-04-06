@@ -1123,15 +1123,36 @@ function initRunnerMode() {
 
     // ── Canvas sizing ──
     function resizeCanvas() {
-        const maxW = Math.min(section.clientWidth, 500);
-        const h = Math.min(window.innerHeight * 0.7, 700);
-        canvas.width = maxW;
-        canvas.height = h;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
+
+    // ── Fullscreen helpers ──
+    function enterFullscreen() {
+        const el = gameWrapper;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    }
+    function exitFullscreen() {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (document.webkitFullscreenElement) document.webkitExitFullscreen();
+    }
+
+    const exitBtn = document.getElementById('runner-exit-btn');
+    exitBtn.addEventListener('click', () => {
+        exitFullscreen();
+        if (animFrame) cancelAnimationFrame(animFrame);
+        animFrame = null;
+        showScreen('select');
+    });
+
+    document.addEventListener('fullscreenchange', () => { if (document.fullscreenElement) resizeCanvas(); });
+    window.addEventListener('resize', () => { if (gameWrapper.style.display !== 'none') resizeCanvas(); });
 
     // ── Reset & Start ──
     function startGame() {
         showScreen('game');
+        enterFullscreen();
         resizeCanvas();
         highScore = parseInt(localStorage.getItem('beitarRunnerHighScore')) || 0;
         hudHigh.textContent = highScore;
@@ -1141,10 +1162,10 @@ function initRunnerMode() {
         playerJump = 0;
         jumpVel = 0;
         isJumping = false;
-        baseSpeed = 3;
+        baseSpeed = 1.5;
         speed = baseSpeed;
-        maxSpeed = 10;
-        accelRate = 0.003;
+        maxSpeed = 5;
+        accelRate = 0.0015;
         obstacles = [];
         collectibles = [];
         particles = [];
