@@ -1162,10 +1162,10 @@ function initRunnerMode() {
         playerJump = 0;
         jumpVel = 0;
         isJumping = false;
-        baseSpeed = 1.5;
+        baseSpeed = 0.8;
         speed = baseSpeed;
-        maxSpeed = 5;
-        accelRate = 0.0015;
+        maxSpeed = 3;
+        accelRate = 0.0008;
         obstacles = [];
         collectibles = [];
         particles = [];
